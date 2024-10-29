@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from datetime import date
 
 class Genre(models.Model):
-    name = models.CharField(max_length=200, help_text="Enter a book genre(e.g.ScienceFiction, FrenchPoetryetc.)")
+    name = models.CharField(max_length=200, help_text="Enter a book genre(e.g. ScienceFiction, FrenchPoetryetc.)", unique=True)
 
     def __str__(self):
         return self.name
@@ -54,6 +54,7 @@ class BookInstance(models.Model):
         if self.due_back and date.today() > self.due_back:
             return True
         return False
+
 
 class Author(models.Model):
     first_name = models.CharField(max_length=100)
